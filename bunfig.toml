@@ -1,0 +1,4 @@
+# disable telemetry
+telemetry = false
+
+install.saveTextLockfile = true

@@ -2,9 +2,9 @@
   "name": "krist-monorepo",
   "private": true,
   "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
-    "lint": "turbo lint",
+    "build": "bunx turbo build",
+    "dev": "bunx turbo dev",
+    "lint": "bunx turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
