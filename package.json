@@ -19,5 +19,9 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "@astrojs/react": "^4.1.2",
+    "@astrojs/tailwind": "^5.1.4"
+  }
 }

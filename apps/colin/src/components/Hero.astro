@@ -1,0 +1,29 @@
+---
+import { Button } from "@/components/ui/button";
+---
+
+<section class="flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-black text-white">
+  <div class="flex flex-col justify-center gap-7 cassette-border p-8 sm:p-12 lg:p-16 max-w-4xl w-full">
+    <h1 class="text-6xl sm:text-8xl lg:text-9xl font-black leading-none font-display">
+      Hello<span class="text-red-500">.</span>
+    </h1>
+    <p class="text-xl sm:text-2xl lg:text-3xl font-medium mb-8">
+      Here you'll find plenty of my projects and experiences
+      <br><br>
+      I hope they inspire you
+      <br><br>
+      I'm a software engineer and I'm finding passion to build while juggling parenthood
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <Button variant="destructive" className="hover:text-red-500">About Me</Button>
+      <Button variant="default" className="hover:text-red-500">My Projects</Button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cassette-border {
+    border: 4px solid #fff;
+    box-shadow: 0 0 0 4px #000, 0 0 0 8px #fff, 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+</style>

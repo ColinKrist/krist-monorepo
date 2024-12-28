@@ -1,0 +1,37 @@
+---
+import { Button } from "@/components/ui/button";
+---
+
+<header class="sticky top-0 left-0 w-full bg-black text-white p-4 z-50 font-display">
+  <div class="container mx-auto flex justify-between items-center">
+    <div class="text-2xl font-bold">
+      <span class="rainbow-text">colin</span>.krist<span class="text-xs">.io</span>
+    </div>
+    <nav>
+      <Button variant="ghost" className="hover:text-red-500">About</Button>
+      <Button variant="ghost" className="hover:text-red-500">Experience</Button>
+      <Button variant="ghost" className="hover:text-red-500">Skills</Button>
+      <Button variant="ghost" className="hover:text-red-500">Projects</Button>
+      <Button variant="ghost" className="hover:text-red-500">Contact</Button>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .rainbow-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-green-500 to-yellow-500;
+    animation: rainbow 5s ease infinite;
+  }
+
+  @keyframes rainbow {
+    0%,
+    100% {
+      background-size: 200% 200%;
+      background-position: left center;
+    }
+    50% {
+      background-size: 200% 200%;
+      background-position: right center;
+    }
+  }
+</style>

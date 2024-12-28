@@ -1,0 +1,54 @@
+---
+const experiences = [
+  {
+    title: "Senior Web Developer",
+    company: "Tech Innovators Inc.",
+    period: "2020 - Present",
+    description:
+      "Led a team of developers in creating cutting-edge web applications...",
+  },
+  {
+    title: "Full Stack Developer",
+    company: "Digital Solutions LLC",
+    period: "2017 - 2020",
+    description:
+      "Developed and maintained multiple client websites and internal tools...",
+  },
+  // Add more experiences as needed
+];
+---
+
+<section id="experience" class="py-20 bg-gray-900 text-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold mb-8 text-center">Experience</h2>
+    <div class="space-y-12">
+      {
+        experiences.map((exp) => (
+          <div class="border border-gray-700 p-6 rounded-lg hover:border-neon-blue transition-colors duration-300">
+            <h3 class="text-2xl font-bold mb-2">{exp.title}</h3>
+            <p class="text-neon-blue mb-2">
+              {exp.company} | {exp.period}
+            </p>
+            <p>{exp.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .text-neon-blue {
+    color: #4deeea;
+    text-shadow:
+      0 0 5px #4deeea,
+      0 0 10px #4deeea;
+  }
+
+  .hover\:border-neon-blue:hover {
+    border-color: #4deeea;
+    box-shadow:
+      0 0 5px #4deeea,
+      0 0 10px #4deeea;
+  }
+</style>

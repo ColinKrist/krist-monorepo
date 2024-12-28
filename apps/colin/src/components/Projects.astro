@@ -1,0 +1,44 @@
+---
+const projects = [
+  {
+    title: "Project 1",
+    description: "A brief description of Project 1...",
+    technologies: ["React", "Node.js", "MongoDB"],
+    link: "#"
+  },
+  {
+    title: "Project 2",
+    description: "A brief description of Project 2...",
+    technologies: ["Vue.js", "Express", "PostgreSQL"],
+    link: "#"
+  },
+  // Add more projects as needed
+];
+---
+
+<section id="projects" class="py-20 bg-gray-800 text-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold mb-8 text-center">Projects</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {projects.map((project) => (
+        <div class="border border-gray-700 p-6 rounded-lg hover:border-neon-pink transition-colors duration-300">
+          <h3 class="text-2xl font-bold mb-2">{project.title}</h3>
+          <p class="mb-4">{project.description}</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            {project.technologies.map((tech) => (
+              <span class="bg-gray-700 px-2 py-1 rounded-full text-sm">{tech}</span>
+            ))}
+          </div>
+          <a href={project.link} class="text-neon-pink hover:underline">View Project</a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .text-neon-pink {
+    color: #FF10F0;
+    text-shadow: 0 0 5px #FF10F0, 0 0 10px #FF10F0;
+  }
+</style>

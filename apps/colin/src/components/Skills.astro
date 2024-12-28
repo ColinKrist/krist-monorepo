@@ -1,0 +1,39 @@
+---
+const skills = [
+  "JavaScript",
+  "TypeScript",
+  "React",
+  "Node.js",
+  "Python",
+  "HTML5",
+  "CSS3",
+  "Tailwind CSS",
+  "Git",
+  "AWS",
+  // Add more skills as needed
+];
+---
+
+<section id="skills" class="py-20 bg-gray-800 text-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold mb-8 text-center">Skills</h2>
+    <div class="flex flex-wrap justify-center gap-4">
+      {
+        skills.map((skill) => (
+          <div class="bg-gray-700 px-4 py-2 rounded-full text-neon-pink hover:bg-gray-600 transition-colors duration-300">
+            {skill}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .text-neon-pink {
+    color: #ff10f0;
+    text-shadow:
+      0 0 5px #ff10f0,
+      0 0 10px #ff10f0;
+  }
+</style>
