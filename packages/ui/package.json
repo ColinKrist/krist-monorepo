@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "type": "module",
   "private": true,
+  "packageManager": "bun@1.1.42",
   "exports": {
     "./button": "./src/button.tsx",
     "./card": "./src/card.tsx",
