@@ -5,43 +5,26 @@ import {
   createRootRoute,
 } from "@tanstack/react-router";
 import { Meta, Scripts } from "@tanstack/start";
-import type { ReactNode } from "react";
 
 export const Route = createRootRoute({
+  component: RootComponent,
   head: () => ({
     meta: [
-      {
-        charSet: "utf-8",
-      },
-      {
-        name: "viewport",
-        content: "width=device-width, initial-scale=1",
-      },
-      {
-        title: "TanStack Start Starter",
-      },
+      { charSet: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { title: "NOS - Cycling Groups Portal" },
     ],
   }),
-  component: RootComponent,
 });
 
 function RootComponent() {
-  return (
-    <RootDocument>
-      {/* @ts-ignore */}
-      <Outlet />
-    </RootDocument>
-  );
-}
-
-function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en">
       <head>
         <Meta />
       </head>
-      <body>
-        {children}
+      <body suppressHydrationWarning={true}>
+        <Outlet />
         <ScrollRestoration />
         <Scripts />
       </body>
