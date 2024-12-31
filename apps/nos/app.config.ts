@@ -29,6 +29,7 @@ export default defineConfig({
   vite: {
     build: {
       sourcemap: true,
+      manifest: true,
     },
   },
 });
