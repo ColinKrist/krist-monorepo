@@ -18,8 +18,12 @@
     "lint": {
       "dependsOn": [
         "^lint"
-      ],
-      "cache": true
+      ]
+    },
+    "test": {
+      "dependsOn": [
+        "^test$"
+      ]
     },
     "check-types": {
       "dependsOn": [

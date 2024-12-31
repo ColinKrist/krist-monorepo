@@ -1,0 +1,35 @@
+{
+  "name": "nos",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "vinxi dev",
+    "build": "vinxi build",
+    "start": "vinxi start",
+    "deploy": "wrangler deploy",
+    "cf-typegen": "wrangler types",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio",
+    "db:push": "drizzle-kit push"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241224.0",
+    "@types/bun": "latest",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "@vitejs/plugin-react": "^4.3.4",
+    "drizzle-kit": "^0.30.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@tanstack/react-router": "^1.92.11",
+    "@tanstack/start": "^1.92.11",
+    "drizzle-orm": "^0.38.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "vinxi": "^0.5.1"
+  }
+}
