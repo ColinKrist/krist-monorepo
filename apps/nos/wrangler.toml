@@ -1,7 +1,7 @@
 #:schema node_modules/wrangler/config-schema.json
 name = "nos"
 main = "./.output/server/index.mjs"
-assets = { directory = "./.output/client", binding = "ASSETS" }
+assets = { directory = "./.output/public", binding = "ASSETS" }
 compatibility_date = "2024-12-24"
 compatibility_flags = ["nodejs_compat"]
 

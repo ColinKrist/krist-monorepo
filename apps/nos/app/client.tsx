@@ -4,6 +4,13 @@ import { hydrateRoot } from "react-dom/client";
 import { StartClient } from "@tanstack/start";
 import { createRouter } from "./router";
 
-const router = createRouter();
+async function startApp() {
+  try {
+    const router = createRouter();
+    hydrateRoot(document, <StartClient router={router} />);
+  } catch (error) {
+    console.error("Failed to start app:", error);
+  }
+}
 
-hydrateRoot(document, <StartClient router={router} />);
+startApp();
