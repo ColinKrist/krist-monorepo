@@ -1,3 +1,4 @@
+import type { Env } from "./../worker-configuration.d";
 import { type DrizzleD1Database, drizzle } from "drizzle-orm/d1";
 import { Hono } from "hono";
 import { poweredBy } from "hono/powered-by";
@@ -6,7 +7,7 @@ import * as schema from "~/db/schema";
 
 type Bindings = {
   db: DrizzleD1Database<typeof schema>;
-};
+} & Env;
 
 declare module "react-router" {
   interface AppLoadContext extends Bindings {}
@@ -24,9 +25,7 @@ export default await createHonoServer({
   },
   app,
   getLoadContext(c) {
-    console.log(c);
-
-    const db = drizzle(c.env.DB, { schema });
-    return { db };
+    const db = drizzle(c.env.D1, { schema });
+    return { db, ...c.env };
   },
 });
