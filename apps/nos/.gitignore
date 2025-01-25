@@ -175,5 +175,10 @@ dist
 .DS_Store
 
 .output
-.vinxi
 .wrangler
+
+node_modules
+
+/.cache
+/build
+.env
