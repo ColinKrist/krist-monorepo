@@ -1,23 +1,16 @@
 import { reactRouter } from "@react-router/dev/vite";
 import { cloudflareDevProxy } from "@react-router/dev/vite/cloudflare";
 import { reactRouterHonoServer } from "react-router-hono-server/dev";
-import autoprefixer from "autoprefixer";
-import tailwindcss from "tailwindcss";
 import { defineConfig } from "vite";
-import type { Plugin } from "vite";
+import autoprefixer from "autoprefixer";
 import tsconfigPaths from "vite-tsconfig-paths";
+import tailwindcss from "@tailwindcss/vite";
 
-export default defineConfig(({ isSsrBuild }) => ({
-  build: {
-    rollupOptions: isSsrBuild
-      ? {
-          input: "./workers/app.ts",
-        }
-      : undefined,
-  },
+export default defineConfig({
+  build: {},
   css: {
     postcss: {
-      plugins: [tailwindcss, autoprefixer],
+      plugins: [autoprefixer],
     },
   },
 
@@ -40,11 +33,12 @@ export default defineConfig(({ isSsrBuild }) => ({
     },
   },
   plugins: [
+    tailwindcss(),
     cloudflareDevProxy(),
     reactRouterHonoServer({
       runtime: "cloudflare",
     }),
     reactRouter(),
     tsconfigPaths(),
-  ] as Plugin[],
-}));
+  ],
+});
