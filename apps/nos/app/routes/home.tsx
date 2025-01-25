@@ -1,6 +1,5 @@
 import * as schema from "~/db/schema";
 import type { Route } from "./+types/home";
-import { Welcome } from "~/components/Welcome";
 import { Form, useNavigation } from "react-router";
 
 export function meta(args: Route.MetaArgs) {
@@ -67,8 +66,6 @@ export default function Home({ actionData, loaderData }: Route.ComponentProps) {
 
   return (
     <div className="space-y-8 p-4">
-      <Welcome message={loaderData.message ?? "No Message"} />
-
       <div className="max-w-md mx-auto">
         <Form
           method="post"
