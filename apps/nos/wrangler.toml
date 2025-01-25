@@ -1,7 +1,8 @@
 #:schema node_modules/wrangler/config-schema.json
 name = "nos"
-main = "./.output/server/index.mjs"
-assets = { directory = "./.output/public", binding = "ASSETS" }
+workers_dev = true
+main = "./build/server/index.js"
+assets = { directory = "./build/client/", binding = "ASSETS" }
 compatibility_date = "2024-12-24"
 compatibility_flags = ["nodejs_compat"]
 
@@ -26,7 +27,7 @@ mode = "smart"
 # [vars]
 # MY_VARIABLE = "production_value"
 
-# Bind the Workers AI model catalog. Run machine learning models, powered by serverless GPUs, on Cloudflare’s global network
+# Bind the Workers AI model catalog. Run machine learning models, powered by serverless GPUs, on Cloudflare's global network
 # Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#workers-ai
 # [ai]
 # binding = "AI"
@@ -41,13 +42,14 @@ mode = "smart"
 # [browser]
 # binding = "MY_BROWSER"
 
-# Bind a D1 database. D1 is Cloudflare’s native serverless SQL database.
+# Bind a D1 database. D1 is Cloudflare's native serverless SQL database.
 # Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#d1-databases
 [[d1_databases]]
 binding = "D1"
 database_name = "nos"
 database_id = "0627c674-fc1e-4fac-8ff0-33540c2416ac"
-migrations_dir = "drizzle"
+migrations_table = "migrations"
+migrations_dir = "./drizzle"
 
 # Bind a dispatch namespace. Use Workers for Platforms to deploy serverless functions programmatically on behalf of your customers.
 # Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#dispatch-namespace-bindings-workers-for-platforms
