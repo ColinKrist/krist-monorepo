@@ -26,6 +26,7 @@ export default await createHonoServer({
   app,
   getLoadContext(c) {
     const db = drizzle(c.env.D1, { schema });
+    // @ts-ignore
     return { db, ...c.env };
   },
 });
