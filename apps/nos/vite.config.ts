@@ -22,24 +22,6 @@ export default defineConfig({
     },
   },
 
-  // ssr: {
-  //   target: "webworker",
-  //   noExternal: true,
-  //   external: ["node:async_hooks"],
-  //   resolve: {
-  //     conditions: ["workerd", "browser"],
-  //   },
-  //   optimizeDeps: {
-  //     include: [
-  //       "react",
-  //       "react/jsx-runtime",
-  //       "react/jsx-dev-runtime",
-  //       "react-dom",
-  //       "react-dom/server",
-  //       "react-router",
-  //     ],
-  //   },
-  // },
   plugins: [
     tailwindcss(),
     cloudflareDevProxy(),
@@ -48,6 +30,7 @@ export default defineConfig({
       flag: {
         force_react_19: true,
       },
+      serverEntryPoint: "./app/server/index.ts",
     }),
     reactRouter(),
     tsconfigPaths(),
