@@ -1,15 +1,26 @@
+import { AuthUIProvider } from "@daveyplate/better-auth-ui";
 import {
   isRouteErrorResponse,
   Links,
   Meta,
+  NavLink,
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
+  useNavigate,
 } from "react-router";
 
-import type { Route } from "./+types/root";
-import stylesheet from "./app.css?url";
+import "./app.css";
 
+import type { Route } from "./+types/root";
+import { getAuthClient } from "./api/getAuthClient";
+import {
+  authClientContext,
+  clientAuthMiddleware,
+} from "./middleware/client/client-auth-middleware";
+import { clientPerfMiddleware } from "./middleware/client/client-perf-middleware";
+import { createAuthClient } from "better-auth/react";
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -21,7 +32,6 @@ export const links: Route.LinksFunction = () => [
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
   },
-  { rel: "stylesheet", href: stylesheet },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -33,7 +43,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="w-screen h-screen flex flex-col">
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -43,7 +53,28 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  console.log(import.meta.env.VITE_AUTH_BASE_URL);
+
+  const authClient = createAuthClient({
+    baseURL: import.meta.env.VITE_AUTH_BASE_URL,
+    basePath: "/api/auth",
+    fetchOptions: {
+      mode: "no-cors",
+    },
+  });
+
+  const navigate = useNavigate();
+  return (
+    <AuthUIProvider
+      // @ts-ignore
+      authClient={authClient}
+      navigate={navigate}
+      // @ts-ignore
+      Link={NavLink}
+    >
+      <Outlet />
+    </AuthUIProvider>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
@@ -80,3 +111,8 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
 export function HydrateFallback() {
   <div>Loading...</div>;
 }
+
+export const unstable_clientMiddleware = [
+  clientPerfMiddleware,
+  clientAuthMiddleware,
+];

@@ -3,12 +3,11 @@ import { type DrizzleD1Database, drizzle } from "drizzle-orm/d1";
 import { Hono } from "hono";
 import { poweredBy } from "hono/powered-by";
 import { createHonoServer } from "react-router-hono-server/cloudflare";
-import * as schema from "~/db/schema";
+import * as schema from "@/db/schema";
 import { trpcServer } from "@hono/trpc-server";
-import { appRouter } from "~/api/server";
+import { appRouter } from "@/api/server";
 import { getLoadContext, type Bindings, type AuthVariables } from "./context";
 import { setupAuth } from "./auth/setup";
-import { setupAuthClient } from "./auth/setupClient";
 
 const app = new Hono<{ Bindings: Bindings; Variables: AuthVariables }>();
 
@@ -16,8 +15,6 @@ export default createHonoServer({
   beforeAll(app) {
     app.use((c, next) => {
       c.set("auth", setupAuth(c));
-
-      c.set("authClient", setupAuthClient(c));
 
       return next();
     });
@@ -44,6 +41,22 @@ export default createHonoServer({
       c.set("user", session.user);
       c.set("session", session.session);
       return next();
+    });
+
+    app.on(["POST", "GET"], "/api/auth/*", (c) => {
+      return c.var.auth.handler(c.req.raw);
+    });
+
+    app.get("/session", async (c) => {
+      const session = c.get("session");
+      const user = c.get("user");
+
+      if (!user) return c.body(null, 401);
+
+      return c.json({
+        session,
+        user,
+      });
     });
 
     c.use(

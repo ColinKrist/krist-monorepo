@@ -1,4 +1,4 @@
-import * as schema from "~/db/schema";
+import * as schema from "@/db/schema";
 import type { Route } from "./+types/upload";
 import { Form, useNavigation } from "react-router";
 

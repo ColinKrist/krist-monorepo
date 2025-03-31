@@ -20,8 +20,8 @@
     "baseUrl": ".",
     "rootDirs": [".", "./.react-router/types", "worker-configuration.d.ts"],
     "paths": {
-      "~/db/*": ["./db/*"],
-      "~/*": ["./app/*"]
+      "@/db/*": ["./db/*"],
+      "@/*": ["./app/*"]
     },
     "esModuleInterop": true,
     "resolveJsonModule": true

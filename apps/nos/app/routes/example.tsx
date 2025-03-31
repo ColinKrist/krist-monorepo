@@ -1,4 +1,4 @@
-import type * as schema from "~/db/schema";
+import type * as schema from "@/db/schema";
 import type { Route } from "./+types/home";
 import { Link } from "react-router";
 

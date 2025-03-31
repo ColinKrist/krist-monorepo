@@ -1,8 +1,8 @@
 import { initTRPC } from "@trpc/server";
 import { count } from "drizzle-orm";
 import { z } from "zod";
-import { authUsers } from "~/db/schema";
-import type { Bindings } from "~/server/context";
+import { authUsers } from "@/db/schema";
+import type { Bindings } from "@/server/context";
 
 type HonoContext = Bindings;
 

@@ -1,17 +1,11 @@
-import type { Context } from "hono";
-import { createAuthClient } from "better-auth/client";
-import {
-  inferAdditionalFields,
-  genericOAuthClient,
-} from "better-auth/client/plugins";
+import { createAuthClient } from "better-auth/react";
 
-import type { AuthVariables, Bindings } from "../context";
+export type AuthClient = ReturnType<typeof createAuthClient>;
 
-export function setupAuthClient(
-  c: Context<{ Bindings: Bindings; Variables: AuthVariables }>
-): ReturnType<typeof createAuthClient> {
-  return createAuthClient({
-    baseURL: "http://localhost:3000",
-    plugins: [inferAdditionalFields<typeof c.env.auth>(), genericOAuthClient()],
+export function setupAuthClient(baseUrl: string): AuthClient {
+  const client = createAuthClient({
+    baseURL: baseUrl, // the base url of your auth server
   });
+
+  return client;
 }

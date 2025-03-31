@@ -8,6 +8,9 @@ declare module "react-router" {
 
 type Params = {
   "/": {};
+  "/auth/:pathname": {
+    "pathname": string;
+  };
   "/example": {};
   "/upload": {};
   "/home": {};
