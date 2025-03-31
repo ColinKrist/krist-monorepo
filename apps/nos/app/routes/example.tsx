@@ -17,8 +17,6 @@ export async function loader({ context }: Route.LoaderArgs) {
     orderBy: (photos, { desc }) => [desc(photos.createdAt)],
   });
 
-  console.log(photos);
-
   return {
     photos,
   };

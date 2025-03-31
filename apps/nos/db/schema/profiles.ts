@@ -1,12 +1,12 @@
 import { int, sqliteTable, text } from "drizzle-orm/sqlite-core";
 import { sql } from "drizzle-orm";
-import { users } from "./users";
+import { authUsers } from "./auth-users";
 
 export const profiles = sqliteTable("profiles", {
   id: int("id").primaryKey({ autoIncrement: true }),
   userId: int("user_id")
     .notNull()
-    .references(() => users.id),
+    .references(() => authUsers.id),
   firstName: text("first_name").notNull(),
   lastName: text("last_name").notNull(),
   dateOfBirth: text("date_of_birth"),

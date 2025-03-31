@@ -1,7 +1,7 @@
 import { int, sqliteTable, text, real } from "drizzle-orm/sqlite-core";
 import { sql } from "drizzle-orm";
 import { races } from "./races";
-import { users } from "./users";
+import { authUsers } from "./auth-users";
 
 export const tickets = sqliteTable("tickets", {
   id: int("id").primaryKey({ autoIncrement: true }),
@@ -10,7 +10,7 @@ export const tickets = sqliteTable("tickets", {
     .references(() => races.id),
   userId: int("user_id")
     .notNull()
-    .references(() => users.id),
+    .references(() => authUsers.id),
   status: text("status").notNull().default("pending"), // pending, confirmed, cancelled, refunded
   purchaseDate: text("purchase_date")
     .default(sql`CURRENT_TIMESTAMP`)

@@ -7,8 +7,6 @@ export async function action({ request, context }: Route.ActionArgs) {
   const fileData = formData.get("photo");
   const bibId = Number(formData.get("bibId"));
 
-  console.log(bibId);
-
   if (!fileData || !(fileData instanceof File) || !bibId) {
     return { error: "Photo and bib ID are required" };
   }

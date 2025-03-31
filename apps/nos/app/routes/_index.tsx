@@ -1,5 +1,3 @@
-import { users } from "~/db/schema";
-import { count } from "drizzle-orm";
 import type { Route } from "./+types/_index";
 import { useLoaderData } from "react-router";
 import { globalAppContext } from "~/server/context";
