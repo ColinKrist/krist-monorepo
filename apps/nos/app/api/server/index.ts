@@ -6,7 +6,7 @@ import type { Bindings } from "@/server/context";
 
 type HonoContext = Bindings;
 
-const t = initTRPC.context<HonoContext>().create();
+const t = initTRPC.context<HonoContext>().create({});
 
 const publicProcedure = t.procedure;
 const router = t.router;

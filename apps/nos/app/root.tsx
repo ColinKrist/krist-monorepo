@@ -1,26 +1,17 @@
-import { AuthUIProvider } from "@daveyplate/better-auth-ui";
 import {
   isRouteErrorResponse,
   Links,
   Meta,
-  NavLink,
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
-  useNavigate,
 } from "react-router";
 
 import "./app.css";
 
 import type { Route } from "./+types/root";
-import { getAuthClient } from "./api/getAuthClient";
-import {
-  authClientContext,
-  clientAuthMiddleware,
-} from "./middleware/client/client-auth-middleware";
 import { clientPerfMiddleware } from "./middleware/client/client-perf-middleware";
-import { createAuthClient } from "better-auth/react";
+import { Toaster } from "sonner";
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -47,34 +38,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
         <ScrollRestoration />
         <Scripts />
+        <Toaster />
       </body>
     </html>
   );
 }
 
 export default function App() {
-  console.log(import.meta.env.VITE_AUTH_BASE_URL);
-
-  const authClient = createAuthClient({
-    baseURL: import.meta.env.VITE_AUTH_BASE_URL,
-    basePath: "/api/auth",
-    fetchOptions: {
-      mode: "no-cors",
-    },
-  });
-
-  const navigate = useNavigate();
-  return (
-    <AuthUIProvider
-      // @ts-ignore
-      authClient={authClient}
-      navigate={navigate}
-      // @ts-ignore
-      Link={NavLink}
-    >
-      <Outlet />
-    </AuthUIProvider>
-  );
+  return <Outlet />;
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
@@ -112,7 +83,4 @@ export function HydrateFallback() {
   <div>Loading...</div>;
 }
 
-export const unstable_clientMiddleware = [
-  clientPerfMiddleware,
-  clientAuthMiddleware,
-];
+export const unstable_clientMiddleware = [clientPerfMiddleware];

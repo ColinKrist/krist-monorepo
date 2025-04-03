@@ -12,6 +12,7 @@ type Params = {
     "pathname": string;
   };
   "/example": {};
+  "/sign-in": {};
   "/upload": {};
   "/home": {};
 };
