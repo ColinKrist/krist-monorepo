@@ -19,8 +19,8 @@
     "@repo/typescript-config": "*",
     "@turbo/gen": "^1.12.4",
     "@types/node": "^22.0.0",
-    "@types/react": "19.0.2",
-    "@types/react-dom": "19.0.2",
+    "@types/react": "19.1.1",
+    "@types/react-dom": "19.1.2",
     "typescript": "5.7.2"
   },
   "dependencies": {
