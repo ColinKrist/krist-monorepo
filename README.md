@@ -1,13 +1,14 @@
-# Turborepo starter
+# Krist Monorepo
 
-This is an official starter Turborepo.
+A personal monorepo built with Turborepo containing multiple applications and packages.
 
-## Using this example
+## Getting Started
 
-Run the following command:
+After cloning this repository, run:
 
 ```sh
-npx create-turbo@latest
+bun install
+npm run submodules:init  # Initialize submodules
 ```
 
 ## What's inside?
@@ -16,11 +17,62 @@ This Turborepo includes the following packages/apps:
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+- `colin`: an [Astro](https://astro.build/) personal website
+- `nos`: a [React Router](https://reactrouter.com/) web application with Cloudflare integration
+- `turbo-cache-on-cloudflare`: a submodule containing Turborepo remote cache for Cloudflare Workers
+- `@repo/ui`: a shared React component library
+- `@repo/eslint-config`: ESLint configurations
+- `@repo/typescript-config`: TypeScript configurations used throughout the monorepo
+
+## Submodule Management
+
+This repository contains submodules that need to be initialized and updated. Use these commands:
+
+### NPM Scripts (Recommended)
+
+```sh
+# Initialize submodules (for fresh clones)
+npm run submodules:init
+
+# Update submodules to latest commits
+npm run submodules:update
+
+# Check status of all submodules
+npm run submodules:status
+
+# Sync submodule URLs from .gitmodules
+npm run submodules:sync
+```
+
+### Direct Shell Script Usage
+
+```sh
+# All commands available through the shell script
+./scripts/submodules.sh help
+
+# Examples:
+./scripts/submodules.sh init     # Initialize submodules
+./scripts/submodules.sh update   # Update to latest
+./scripts/submodules.sh status   # Show status
+```
+
+### For New Team Members
+
+When you first clone this repository:
+
+1. Clone the repo: `git clone <repo-url>`
+2. Install dependencies: `bun install`
+3. Initialize submodules: `npm run submodules:init` (this happens automatically via postinstall)
+
+### Keeping Submodules Updated
+
+To pull the latest changes from all submodules:
+
+```sh
+npm run submodules:update
+```
+
+**Note**: This updates submodules to their latest commits. If you want to pin specific versions, commit the submodule changes after updating.
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 

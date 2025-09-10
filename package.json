@@ -5,7 +5,12 @@
     "build": "bunx turbo build",
     "dev": "bunx turbo dev",
     "lint": "bunx turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "submodules:init": "./scripts/submodules.sh init",
+    "submodules:update": "./scripts/submodules.sh update",
+    "submodules:status": "./scripts/submodules.sh status",
+    "submodules:sync": "./scripts/submodules.sh sync",
+    "postinstall": "./scripts/submodules.sh init"
   },
   "devDependencies": {
     "prettier": "^3.2.5",
