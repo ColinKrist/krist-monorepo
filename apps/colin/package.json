@@ -2,7 +2,7 @@
   "name": "@krist/colin",
   "type": "module",
   "version": "0.0.1",
-  "packageManager": "bun@1.1.42",
+  "packageManager": "bun@1.4.4",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
